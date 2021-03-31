@@ -16,8 +16,12 @@ class App extends Component {
         {this.setState({ books })
       })}
 
-  displayBook  = () => {
-    console.log('I update to the main page')
+  displayBook = (book) => {
+    console.log(book, 'I update to the main page')
+    this.setState({
+      bookInfo : book
+    })
+    // or this.setState({ bookInfo }) and change the param of the method to bookInfo
   }
 
   render() {
@@ -32,7 +36,7 @@ class App extends Component {
 
           </Menu>
           {/*currently the bookInfo in state is set to null, If there is no book, we render null, if there is a book then we render the book info*/}
-          {this.state.bookInfo ? <BookInfo /> : null}
+          {this.state.bookInfo ? <BookInfo bookInfo={this.state.bookInfo}/> : null}
 
         
         </main>

@@ -29,18 +29,25 @@
 
 
 
-** Be able to click on a book, you should see the book's thumbnail and description and a list of users who have liked the book. **
+** Be able to on on a book, you should see the book's thumbnail and description and a list of users who have liked the book. **
 
     ? Where does the click function go and how does it work.
     - onClick should go in <Book /> once it is trigger it shold run back to {App} change the state of a selected book and move into <BookTitle />
 
 ** BookInfo **
-    - moved the book info from { App } into a seperate component called <BookInfo />     
+    - moved the book info from { App } into a seperate component called <BookInfo />    
+
+** App ** 
      - Start with setting a default book in state. so We can set a conditional rendering if a book exist we will load the default book to the page if not it will be null
-    - GOAL: once the onClick in <Book /> is triggered it shold run back to {App} change the state of a bookInfo via setState inside a method associated with the click of a book title > pass the setState as props into <BookInfo /> to display all the book info into the main section on the page
-    - Move the <menu.item> Semantic Ui from <App /> and into <Book />
+
+    ** - GOAL: once the onClick in <Book /> is triggered it shold run back to {App} change the state of a bookInfo via setState inside a method associated with the click of a book title > pass the setState as props into <BookInfo /> to display all the book info into the main section on the page **
+
+   
    - Create a method called displayBook and to first get our click to work let's console.log a message and pass that function down as props toal <Book /> ... pass displayBook method to <BookList /> ... & since its not an instance of a class we only use props ... 
    !Note the naming convention of the props
+
+** Book **
+    - moved the <menu.item> Semantic Ui from <App /> and into <Book />
     ... final resting place of the passed prop of onClick. Replce exists
     with the function prop we are passing down from the parent onClick()
     !no need for props bc we have destructured this up top.
@@ -48,6 +55,40 @@
     ?How do we check to make sure that our onClick props was passed down?
         - Check the react dev tools - Each component that I pass a prop should be displayed in the dev tools
 
-    ?how do I know what book I am clicking and how do I change that from boo ot=
+    ?how do I know what book I am clicking and how do I change that from book to bookInfo?
+    - We need to pass a prop to the onClick function that is listening for a selected book title inside <Book /> 
+    - Thus, onClick={() => onClick(book)} 
+    !no need to add props.book bc we deconstructed it above
+
+    !BIG PICTURE!
+    - At the start in {App} we passed the prop of books from state all the way down to <Book /> which displays the book titles from the server onto the page. 
+    - Then we want a user to be able to click on a book from <Book /> to display Book info onto the main section on the page.
+    - Then we create a click function in {App} and pass that all the way down to the same resting place as books in <Book />
+    - The goal is to display book info from a clicked book title on to the main section of the page.
+    !- In order to do so, we need state.
+    ? Captures the fetche of the books from server
+    ? updated the bookInfo from null to display 
+
+    - The state of books, and the onClick method created in {App} is now accessible in <Book /> so in order connect books and the Onclick method we pass the books as a param inside the click method 
+    - When the method is trigger, it runs back to {App} to run the method passed down as the onClick method.
+
+    - Then we pass the same param book into the displayBook(book) to connect the end points. The parent {App} has connected the onClick method and books, whereas the child <Book /> connecte the onClick method and the books 
+
+    !- to confirm we are indeed passing the props correctly and componenets are received the props and book is being accepted as a param in the click method, We check the React dev tools. 
+
+    ** console.log the param and the message inside the click method and we should indeed see the message and the book logged to the console. **
+
+** App **
+
+    - When the sythentic event is trigger, it will update the state. And that state is passed a param inside displayBook method. We can check to see that bookInfo is indeed a state by clicking on a book. Bc recall it started off as an empty obj. By checking the React dev tools in App
+    - we then setState to {bookInfo} via the shorthand and pass the {this.state.bookInfo} into <BookInfo /> 
+
+** BookInfo **
+    - deconstruct our props at the top & fill inthe respective spots in the coode for {title, image, url, descrip}
+    - However for users, we need to approach this differently bc it is an arary of objs. 
+    ?How do we access and array of objs - We use .map() on the arr
+
+- No
+
 
 

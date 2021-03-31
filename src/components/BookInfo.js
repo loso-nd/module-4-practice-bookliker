@@ -8,15 +8,17 @@ import {
   } from "semantic-ui-react";
   
   
-  const BookInfo = (props) => {
+  const BookInfo = ({bookInfo}) => {
+      console.log(bookInfo) 
+      //something is wrong with the decostructor
       return (
         <Container text>
-            <Header>Book title</Header>
+            <Header>{bookInfo.title}</Header>
             <Image
-            src="https://react.semantic-ui.com/images/wireframe/image.png"
+            src={bookInfo.img_url}
             size="small"
             />
-            <p>Book description</p>
+            <p>{bookInfo.description}</p>
             <Button
             color="red"
             content="Like"
@@ -30,7 +32,7 @@ import {
             />
             <Header>Liked by</Header>
             <List>
-            <List.Item icon="user" content="User name" />
+                {bookInfo.users.map(user => <List.Item icon="user" content={user.username} />)}
             </List>
         </Container>
 

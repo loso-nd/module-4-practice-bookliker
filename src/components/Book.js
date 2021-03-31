@@ -4,7 +4,7 @@ const Book = ({book, onClick}) => {
 //let {book} = props or remove {book} in the param above and replace with props
     return (
         <div>
-        <Menu.Item as={"a"} onClick={e => onClick(e)}>
+        <Menu.Item as={"a"} onClick={() => onClick(book)}>
             {book.title}
         </Menu.Item>
 
