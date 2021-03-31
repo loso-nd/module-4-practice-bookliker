@@ -15,11 +15,39 @@
 
 ** { BookList } **
 
-    - Responsible for presenting details of the book 
+    - Responsible for presenting the book titles on the page
     - functional component that takes props as a param
     - map over the array of books passed in from { App } and returns a list of book titles on the page.
+    - return  <Book /> as a dynamic component and pass it a props of book to allow <Book /> to have acess to those properties
+    - Import Book from Book
     !!Note that we can remove the { } & return keyword, and replace them with ( ) where the function will consider this to be a one line return (implicit func.) we can not call console.log()
 
     !!arrow fun is only returning what is in the ( ) with no other logic. 
+
+    ** Book **
+    - functional component that returns a book tile {props.book.title} or we can deconstruct at the top. Be sure to include the  { } instead of ( ), and add in the rerturn key word.
+
+
+
+** Be able to click on a book, you should see the book's thumbnail and description and a list of users who have liked the book. **
+
+    ? Where does the click function go and how does it work.
+    - onClick should go in <Book /> once it is trigger it shold run back to {App} change the state of a selected book and move into <BookTitle />
+
+** BookInfo **
+    - moved the book info from { App } into a seperate component called <BookInfo />     
+     - Start with setting a default book in state. so We can set a conditional rendering if a book exist we will load the default book to the page if not it will be null
+    - GOAL: once the onClick in <Book /> is triggered it shold run back to {App} change the state of a bookInfo via setState inside a method associated with the click of a book title > pass the setState as props into <BookInfo /> to display all the book info into the main section on the page
+    - Move the <menu.item> Semantic Ui from <App /> and into <Book />
+   - Create a method called displayBook and to first get our click to work let's console.log a message and pass that function down as props toal <Book /> ... pass displayBook method to <BookList /> ... & since its not an instance of a class we only use props ... 
+   !Note the naming convention of the props
+    ... final resting place of the passed prop of onClick. Replce exists
+    with the function prop we are passing down from the parent onClick()
+    !no need for props bc we have destructured this up top.
+
+    ?How do we check to make sure that our onClick props was passed down?
+        - Check the react dev tools - Each component that I pass a prop should be displayed in the dev tools
+
+    ?how do I know what book I am clicking and how do I change that from boo ot=
 
 
