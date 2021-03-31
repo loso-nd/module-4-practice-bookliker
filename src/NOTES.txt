@@ -1,0 +1,25 @@
+?How to get the books onto the page
+
+** { App } **
+
+    - In order to get book onto the page, I need to fetch from server
+    - 1st refactor from a functional > class component
+    - Based on our deliverables and component tree - we want to display 10 books on the left aside, each book will be represented by a book title. 
+    - Book title will be its own component. We can create a BookList component that renders those 10 book titles
+
+    ?How do we can are books into <BookList />
+    - Create a state called books: [] with an empty arr.
+    - Once we fetch all of our books from the server we need place them into our state. 
+    - Currently our state is empty. If use setState inside our 2nd .then() we can get our books into state. To confirm the books ahve been moved we can check react dev tools to see the state has been updated.
+    - Pass books state as props to <BookList />
+
+** { BookList } **
+
+    - Responsible for presenting details of the book 
+    - functional component that takes props as a param
+    - map over the array of books passed in from { App } and returns a list of book titles on the page.
+    !!Note that we can remove the { } & return keyword, and replace them with ( ) where the function will consider this to be a one line return (implicit func.) we can not call console.log()
+
+    !!arrow fun is only returning what is in the ( ) with no other logic. 
+
+
