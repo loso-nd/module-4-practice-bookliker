@@ -16,13 +16,18 @@ class App extends Component {
         {this.setState({ books })
       })}
 
-  displayBook = (book) => {
-    console.log(book, 'I update to the main page')
-    this.setState({
-      bookInfo : book
-    })
-    // or this.setState({ bookInfo }) and change the param of the method to bookInfo
+  displayBook = (bookInfo) => {
+   // console.log(bookInfo, 'I update to the main page')
+    this.setState(prevState => {
+      if(prevState.bookInfo == bookInfo){
+        this.setState({bookInfo: null})
+      }else{
+        this.setState({bookInfo})
+      }
+      //   this.setState({bookInfo : book)}
+    })// or this.setState({ bookInfo }) and change the param of the method to bookInfo
   }
+  
 
   render() {
     return (

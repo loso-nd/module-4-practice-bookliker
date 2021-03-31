@@ -32,7 +32,7 @@ import {
             />
             <Header>Liked by</Header>
             <List>
-                {bookInfo.users.map(user => <List.Item icon="user" content={user.username} />)}
+                {/* {bookInfo.users.map(user => <List.Item icon="user" content={user.username} />)} */}
             </List>
         </Container>
 
