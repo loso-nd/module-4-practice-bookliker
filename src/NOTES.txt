@@ -86,9 +86,24 @@
 ** BookInfo **
     - deconstruct our props at the top & fill inthe respective spots in the coode for {title, image, url, descrip}
     - However for users, we need to approach this differently bc it is an arary of objs. 
-    ?How do we access and array of objs - We use .map() on the arr
+    ?How do we access and array of objs - We use .map() on the arr ??
 
-- No
+** App **
+
+    - Add a conditional statement to ensure that if the same book Title is clicked twice, then we remove it from view.
+
+** Update the user and likes with Patch **
+
+    - Both needs to be triggered by a synthetic event. 
+    - Create a method likeBook and pass that down as props to <BookInfo />
+
+** BookInfo **
+
+    - deconstruct the props
+    - Add onClick into the Button and invoke the likebook method 
+    - likeBook needs the bookInfo.id
+
+
 
 
 

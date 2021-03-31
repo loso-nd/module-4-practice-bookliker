@@ -8,7 +8,7 @@ import {
   } from "semantic-ui-react";
   
   
-  const BookInfo = ({bookInfo}) => {
+  const BookInfo = ({bookInfo, likeBook}) => {
       console.log(bookInfo) 
       //something is wrong with the decostructor
       return (
@@ -19,7 +19,8 @@ import {
             size="small"
             />
             <p>{bookInfo.description}</p>
-            <Button
+            <Button 
+            onClick={(e) => likeBook(bookInfo.id)}
             color="red"
             content="Like"
             icon="heart"
