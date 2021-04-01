@@ -19,25 +19,43 @@ class App extends Component {
   displayBook = (bookInfo) => {
    // console.log(bookInfo, 'I update to the main page')
     this.setState(prevState => {
-      if(prevState.bookInfo === bookInfo){
-        this.setState({bookInfo: null})
-      }else{
-        this.setState({bookInfo})
+      if(prevState.bookInfo == bookInfo){
+        return({bookInfor:null})
+      }else {
+        return ({bookInfo})
       }
-
-      //  w/ ternary -> this.setState(prevState => prevState.bookInfo == bookInfo ? this.setState({bookInfo : null}):this.setState({bookInfo})
-      //  no conditinoal  this.setState({bookInfo : book)}
-      // or this.setState({ bookInfo }) and change the param of the method to bookInfo
-    })
+      //   this.setState({bookInfo : book)}
+    })// or this.setState({ bookInfo }) and change the param of the method to bookInfo
   }
-
-//set state with new user who liked the book
-//`{"id":1, "username":"pouros"}`, so to like a book send a `PATCH` request to `http://localhost:3000/books/:id` with our user
   
 
-likeBook = (id) => {
-  console.log(id, 'I like to read')
-}
+  // {"id":1, "username":"pouros"}`, so to like a book send a `PATCH` request to `http://localhost:3000/books/:id` with an array of users who like the book. This array should be equal to the existing array of users that like the book, plus your user.
+
+  likeBook = (id) => {
+    console.log("Found User")
+    let ourUser = {"id":1, "username":"pouros"}
+    if(this.state.bookInfo.users.find(user => ourUser.id == user.id)){
+      console.log("Found User")
+    } else{
+      console.log("Found User")
+      this.setState({bookInfo: {...this.state.bookInfo, users: [...this.state.bookInfo.users, ourUser]}}, this.updateBook())
+    }
+   
+  }
+
+
+  updateBook = () => {
+    fetch(`http://localhost:3000/books/${this.state.bookInfo.id}`,{
+    method: 'PATCH', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(this.state.bookInfo),
+  })
+  .then(resp => resp.json())
+  .then(console.log)
+  }
+
 
   render() {
     return (
@@ -51,8 +69,7 @@ likeBook = (id) => {
 
           </Menu>
           {/*currently the bookInfo in state is set to null, If there is no book, we render null, if there is a book then we render the book info*/}
-          {this.state.bookInfo ? <BookInfo bookInfo={this.state.bookInfo} 
-          likeBook={this.likeBook}/> : null}
+          {this.state.bookInfo ? <BookInfo bookInfo={this.state.bookInfo} likeBook={this.likeBook}/> : null}
 
         
         </main>

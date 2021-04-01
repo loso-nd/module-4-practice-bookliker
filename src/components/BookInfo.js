@@ -19,8 +19,8 @@ import {
             size="small"
             />
             <p>{bookInfo.description}</p>
-            <Button 
-            onClick={(e) => likeBook(bookInfo.id)}
+            <Button
+            onClick={e => likeBook(bookInfo.id)}
             color="red"
             content="Like"
             icon="heart"

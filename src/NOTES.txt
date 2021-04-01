@@ -102,7 +102,21 @@
     - deconstruct the props
     - Add onClick into the Button and invoke the likebook method 
     - likeBook needs the bookInfo.id
+    - when we click the book we should see the like increment on the page and in the console, the bookInfo, like #, bookInfo.id
+    ! NEED HELP WITH DISPLAYING USER TO THE MAIN PAGE !
 
+** App **
+
+    - Our likeBook method takes a param (id) because we need to know what book in our db we are liking.
+    ?How do we add us to state if we are not there. We are already like the book. How do we add ourselves to the users w/o overwritten what is already there.
+
+    !prevState or spread operator
+    - assign the our new user who liked a book to ourUser and create a conditial statement fo check the current state of bookInfo perform a .find() method to find a user that matches ourUser.id == user.id from the db.
+    ?if it exist()
+
+    ?else(
+        grabbed bookInfo > made a copy of the entire bookInfo > the grab the users attr, form bookInfo > made a copy of the users from BookInfo, and added ourUser info to the end of that.
+    )
 
 
 
